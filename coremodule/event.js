@@ -53,3 +53,31 @@
 // })
 // obj.emit('Circus', 'Circus is there please visit')
 // obj.emit('Circus', 'Circus is there please visit again')
+
+//--------------------------------------------------------------------------------------------------------------
+
+//event module:
+
+var eventemitter = require('events')
+var obj = new eventemitter()
+function fun1() {
+  console.log('open a shop')
+}
+function fun2() {
+  console.log('Buy a candy')
+}
+obj.on('marketopen', fun1)
+obj.on('marketopen', fun2)
+obj.emit('marketopen')
+
+console.log(obj.getMaxListeners()) //default max listeners are 10
+for (let i = 0; i < 10; i++) {
+  obj.on('WeatherChange', fun1)
+}
+obj.emit('WeatherChange')
+
+obj.removeListener('marketopen', fun1)
+obj.emit('marketopen')
+
+obj.removeAllListeners('marketopen')
+obj.emit('marketopen')
