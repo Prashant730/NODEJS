@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>File Operations</title>
+</head>
+
+<body>
+  <h1>Copy File</h1>
+  <form action="/copy" method="post">
+    <label>Source File:</label><br><br>
+    <input type="text" name="src"><br><br>
+    <label>Destination File:</label><br><br>
+    <input type="text" name="dest"><br><br>
+    <input type="submit" value="Copy File">
+  </form>
+
+  <h1>Write File</h1>
+  <form action="/write" method="post">
+    <label>File Name:</label><br><br>
+    <input type="text" name="filename"><br><br>
+    <label>Data to Write:</label><br><br>
+    <textarea name="data"></textarea><br><br>
+    <input type="submit" value="Write File">
+  </form>
+</body>
+
+</html>
