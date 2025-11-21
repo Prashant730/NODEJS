@@ -1,0 +1,17 @@
+{
+  "name": "arwincal999",
+  "version": "1.0.0",
+  "description": "A calculator module demonstrating npm package creation",
+  "keywords": [
+    "calculator",
+    "npm",
+    "module"
+  ],
+  "license": "ISC",
+  "author": "arwin94 arwinderdhillon999@gmail.com",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}

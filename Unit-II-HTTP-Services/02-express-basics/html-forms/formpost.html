@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>POST Method Form Example</title>
+</head>
+<!--
+Filename: formpost.html
+Unit: Unit II - HTTP Services
+Topic: HTML Forms - POST Method
+
+Purpose:
+  This HTML file demonstrates a form using the POST method. POST requests send
+  form data in the request body (not in the URL), making it suitable for
+  sensitive data and larger payloads.
+
+How to Use:
+  1. Start the server: node get-post.js (in Unit-II-HTTP-Services/02-express-basics/)
+  2. Open browser: http://localhost:3001/postlogin
+  3. Enter values in the form fields
+  4. Click Submit
+  5. Observe: URL stays the same, data sent in request body
+  6. Server displays the submitted data as JSON
+
+Form Details:
+  - Method: POST (data sent in request body, not URL)
+  - Action: /formpost (the route that processes this form)
+  - Fields: n1, n2 (text inputs)
+  - Server Handler: get-post.js - app.post('/formpost', ...)
+
+Request-Response Flow:
+  1. User fills form with n1="John", n2="password123"
+  2. Browser sends POST request to /formpost
+  3. Data sent in request body (not visible in URL)
+  4. Server reads req.body.n1 and req.body.n2 (requires body-parser)
+  5. Server processes data and sends JSON response
+  6. Browser displays the response
+
+Key Concepts:
+  - POST method: Data hidden in request body, secure for sensitive info
+  - Request body: Accessed via req.body in Express (needs body-parser)
+  - Not idempotent: POST requests typically modify server data
+  - Not bookmarkable: Can't bookmark POST requests
+  - No size limit: Can send large amounts of data
+
+When to Use POST:
+  ✓ Login forms (passwords)
+  ✓ Registration forms
+  ✓ File uploads
+  ✓ Creating/updating data
+  ✓ Sensitive information
+  ✓ Large data payloads
+  ✗ Search/filter (use GET instead)
+  ✗ Shareable links (use GET instead)
+
+POST vs GET:
+  - POST: Data in body, secure, not visible in URL
+  - GET: Data in URL, visible, bookmarkable
+-->
+<body>
+    <h1>POST Method Form Example</h1>
+    <p>Enter your information (data will be sent securely in request body):</p>
+
+    <!--
+    Form with POST method
+    - action="/formpost" specifies where to send the data
+    - method="post" sends data in request body (not URL)
+    - Data is NOT visible in the URL bar
+    - Requires body-parser middleware on server
+    -->
+    <form action="/formpost" method="post">
+        <label for="n1">Username:</label>
+        <input type="text" name="n1" id="n1" placeholder="Enter username" required>
+        <br><br>
+
+        <label for="n2">Password:</label>
+        <input type="password" name="n2" id="n2" placeholder="Enter password" required>
+        <br><br>
+
+        <!--
+        Submit button triggers POST request
+        Browser will send data to /formpost in request body
+        URL will remain /formpost (no query parameters)
+        -->
+        <input type="submit" value="Submit">
+    </form>
+
+    <hr>
+    <h3>How This Works:</h3>
+    <ol>
+        <li>You enter username and password</li>
+        <li>Click "Submit"</li>
+        <li>Browser sends POST request with data in body (not URL)</li>
+        <li>Server reads data from req.body (requires body-parser)</li>
+        <li>Server processes and returns JSON response</li>
+    </ol>
+
+    <h3>POST vs GET:</h3>
+    <table border="1" cellpadding="10">
+        <tr>
+            <th>Feature</th>
+            <th>GET</th>
+            <th>POST</th>
+        </tr>
+        <tr>
+            <td>Data Location</td>
+            <td>URL (visible)</td>
+            <td>Request body (hidden)</td>
+        </tr>
+        <tr>
+            <td>Security</td>
+            <td>Less secure</td>
+            <td>More secure</td>
+        </tr>
+        <tr>
+            <td>Data Size</td>
+            <td>Limited (~2KB)</td>
+            <td>Unlimited</td>
+        </tr>
+        <tr>
+            <td>Bookmarkable</td>
+            <td>Yes</td>
+            <td>No</td>
+        </tr>
+        <tr>
+            <td>Use Case</td>
+            <td>Search, filters</td>
+            <td>Login, registration</td>
+        </tr>
+    </table>
+
+    <p><strong>Note:</strong> Watch the URL bar after submitting - it stays the same! Data is sent securely in the request body.</p>
+</body>
+</html>

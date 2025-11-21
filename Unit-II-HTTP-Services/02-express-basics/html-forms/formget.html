@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GET Method Form Example</title>
+</head>
+<!--
+Filename: formget.html
+Unit: Unit II - HTTP Services
+Topic: HTML Forms - GET Method
+
+Purpose:
+  This HTML file demonstrates a form using the GET method. GET requests send
+  form data as query parameters in the URL, making the data visible in the
+  browser's address bar.
+
+How to Use:
+  1. Start the server: node first.js (in Unit-II-HTTP-Services/02-express-basics/)
+  2. Open browser: http://localhost:3000/login
+  3. Enter two numbers in the form fields
+  4. Click Submit
+  5. Observe the URL changes to: /getsend?num1=5&num2=3
+  6. Server calculates and displays the sum
+
+Form Details:
+  - Method: GET (default, data sent in URL)
+  - Action: /getsend (the route that processes this form)
+  - Fields: num1, num2 (numeric inputs)
+  - Server Handler: first.js - app.get('/getsend', ...)
+
+Request-Response Flow:
+  1. User fills form with num1=5, num2=3
+  2. Browser sends GET request to /getsend?num1=5&num2=3
+  3. Server reads req.query.num1 and req.query.num2
+  4. Server calculates sum and sends response
+  5. Browser displays result
+
+Key Concepts:
+  - GET method: Data visible in URL, good for searches/filters
+  - Query parameters: Accessed via req.query in Express
+  - Idempotent: GET requests should not modify server data
+  - Bookmarkable: URLs with query params can be bookmarked
+  - Limited data: URLs have length limits (~2000 characters)
+
+When to Use GET:
+  ✓ Search forms
+  ✓ Filters and sorting
+  ✓ Pagination
+  ✓ Shareable links
+  ✗ Sensitive data (passwords, personal info)
+  ✗ Large amounts of data
+  ✗ File uploads
+-->
+<body>
+    <h1>GET Method Form Example</h1>
+    <p>Enter two numbers to calculate their sum:</p>
+
+    <!--
+    Form with GET method (default)
+    - action="/getsend" specifies where to send the data
+    - method is omitted, defaults to GET
+    - Data will be sent as: /getsend?num1=value1&num2=value2
+    -->
+    <form action="/getsend">
+        <label for="num1">First Number:</label>
+        <input type="text" name="num1" id="num1" placeholder="Enter first number" required>
+        <br><br>
+
+        <label for="num2">Second Number:</label>
+        <input type="text" name="num2" id="num2" placeholder="Enter second number" required>
+        <br><br>
+
+        <!--
+        Submit button triggers form submission
+        Browser will navigate to: /getsend?num1=X&num2=Y
+        -->
+        <input type="submit" value="Calculate Sum">
+    </form>
+
+    <hr>
+    <h3>How This Works:</h3>
+    <ol>
+        <li>You enter two numbers in the form fields</li>
+        <li>Click "Calculate Sum"</li>
+        <li>Browser sends GET request with data in URL</li>
+        <li>Server reads the numbers from req.query</li>
+        <li>Server calculates the sum and sends response</li>
+    </ol>
+
+    <p><strong>Note:</strong> Watch the URL bar after submitting - you'll see the form data!</p>
+</body>
+</html>

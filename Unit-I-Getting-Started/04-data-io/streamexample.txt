@@ -1,0 +1,3 @@
+# streamexample.txt
+# Purpose: example input for `coremodule/streams.js` that reads and logs content.
+esfe rtgte  rgtez htg  rrtg

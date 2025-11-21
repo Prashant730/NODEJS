@@ -1,0 +1,24 @@
+{
+  "name": "session-cookies-examples",
+  "version": "1.0.0",
+  "description": "Examples demonstrating cookies and session management in Express.js",
+  "main": "cookie-parser.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node cookie-parser.js"
+  },
+  "keywords": [
+    "express",
+    "cookies",
+    "sessions",
+    "authentication",
+    "middleware"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.0",
+    "cookie-parser": "^1.4.6",
+    "express-session": "^1.17.3"
+  }
+}
